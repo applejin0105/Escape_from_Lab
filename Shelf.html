@@ -62,8 +62,7 @@
 
         // <img> 태그의 click 리스너
         function moveImageAndUpScore() { // 다른 셀로 이미지를 옮기고, 점수를 올려준다
-            var randomNum = Math.floor(Math.random() * 5); // 랜덤한 수 가져온다
-            var go = document.getElementById(randomNum); // 가져온 임의의 수에 해당하는 td요소!
+            var go = document.getElementById(3); // 가져온 임의의 수에 해당하는 td요소!
             go.appendChild(img); // 해당 td에 그림 삽입!!
             ++score;
             if (score === 1) {
