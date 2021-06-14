@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script>
+        function yes() {
+            var s = document.getElementById("text");
+            var audio = new Audio('sound/NotificationMail.wav');
+            audio.play();
+            s.innerHTML = "이상하게 켜지지 않는다. 뭔가 더 필요한걸까?<br><br><a href='#' onclick='out()'>[나가기]</a>";
+        }
+
+        function no() {
+            var s = document.getElementById("text");
+            s.innerHTML = "지금 당장 볼 일은 없다.<br><br><a href='#' onclick='out()'>[나가기]</a>";
+        }
+
+        function out(){
+            window.close();
+        }
+    </script>
+</head>
+
+<body>
+
+    <p>
+        <img src="media/컴퓨터.png" alt="">
+    </p>
+    <article>
+        <span id="text">컴퓨터다. 한번 켜볼까? <br>
+            <a href='#' onclick='yes()'>[예] </a> <a href='#' onclick='no()'>[아니오]</a><br></span>
+    </article>
+
+</body>
+
+</html>

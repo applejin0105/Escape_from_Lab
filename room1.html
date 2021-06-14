@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>room1</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <audio src="sound/door-2-close.wav" autoplay></audio>
+    <script>
+        var Hint_count;
+        var Search_count;
+        var move_count;
+
+        function Move() {
+            var s = document.getElementById("text");
+            switch (move_count) {
+                case 0: s.innerHTML = "문을 한번 열어볼까?<br><br><a href='#' onclick='mover()'>[확인]</a>"; break;
+                case 1: s.innerHTML = "좋아 이제 이동해 볼까?<br><br><a href='room2.html' onclick='mover()'>[확인]</a>"; break;
+            }
+        }
+        function Search() {
+            var s = document.getElementById("text");
+            switch (Search_count) {
+                case 0: s.innerHTML = "어디를 살펴볼까?<br><br><a href='#' onclick='partition()'>[가벽]</a><br><br><a href='#' onclick='water()'>[정수기]</a><br><br><a href='#'"; break;
+                case 1: s.innerHTML = "어디를 살펴볼까?<br><br><a href='#' onclick='partition()'>[가벽]</a>"; break;
+                case 2: s.innerHTML = "어디를 살펴볼까?<br><br><a href='#' onclick='board()'>[게시판]</a>"; break;
+            }
+        }
+        function Hint() {
+            var s = document.getElementById("text");
+            switch (Hint_count) {
+                case 0: s.innerHTML = "일단 주변을 살펴보자"; break;
+                case 1: s.innerHTML = "이 USB를 어디에 써야할까?"; break;
+                case 2: s.innerHTML = "게시판을 확인하자."; break;
+            }
+
+        }
+        function init() {
+            Hint_count = 0;
+            Search_count = 0;
+            move_count = 0;
+        }
+        function water() {
+            if (Hint_count === 0)
+                Hint_count = 1;
+            if (Search_count === 0)
+                Search_count = 1;
+            window.open('water.html', '정수기', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+            Search();
+        }
+        function board() {
+            if (Hint_count === 1)
+                Hint_count = 2;
+            if (Search_count === 1)
+                Search_count = 2;
+            var check = window.open('board.html', '책장', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+            move_count = 1;
+            Move();
+        }
+
+        function partition() {
+            if (Search_count === 0) {
+                window.open('partition.html', '가벽', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+            }
+            else if (Search_count === 1) {
+                window.open('partitionwithUsb.html', '가벽', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+                Search_count = 2;
+                Hint_count = 2;
+            }
+            Search();
+        }
+
+        function findkey(ke) {
+            if (ke === 1) {
+                Search_count = 3;
+                move_count = 3;
+                Hint_count = 3;
+            }
+        }
+
+        function mover() {
+            var s = document.getElementById("text");
+            if (move_count === 0) {
+                s.innerHTML = "문이 잠겨있어. 열쇠같은게 어디 있으려나?"
+                var audio = new Audio('sound/door-2-close.wav');
+                audio.play();
+                Hint_count = 1;
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <!--<audio src="sound/clock.wav" autoplay loop></audio>-->
+    <section>
+        <p>
+            <img src="media/room_usb_closed.png" alt="">
+        </p>
+
+        <article>
+            <span id="text">자... 어디부터 찾아볼까?</span></p>
+        </article>
+        <aside>
+            <button onclick="Search()">탐색</button>
+            <button onclick="Move()">이동</button>
+            <button onclick="Hint()">힌트</button>
+        </aside>
+    </section>
+</body>
+
+</html>

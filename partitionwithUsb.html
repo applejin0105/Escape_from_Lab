@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <audio src="sound/BootUp.wav" autoplay></audio>
+    <script>
+        function yes() {
+            var s = document.getElementById("text");
+            var audio = new Audio('sound/폰진동1.wav');
+            audio.play();
+            s.innerHTML = "테블릿 pc가 켜진다. 화면에 알림이 뜬다.<br><br><a href='#' onclick='check()'>[확인]</a>";
+        }
+
+        function check(){
+            var s = document.getElementById("text");
+            window.open('tableton.html', '업데이트 완료', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+            s.innerHTML = "<a href='tableton.html' onclick='out()'>[나가기]"
+        }
+
+        function out() {
+            window.close();
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <p>
+        <img src="media/컴퓨터.png" alt="">
+    </p>
+    <article>
+        <span id="text">USB를 사용해 컴퓨터를 켰다.<br>
+            <a href='#' onclick='yes()'>[확인] </a></span>
+    </article>
+
+</body>
+
+</html>

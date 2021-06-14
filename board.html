@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script>
+        var num1, num2;
+        function yes() {
+            var s = document.getElementById("text");
+            s.innerHTML = "바로 시작해보자<br><br><a href='#' onclick='one()'>[포스터]</a><br><br><a href='#' onclick='two()'>[문제]</a>";
+            if (num1 === 1)
+                s.innerHTML = "다음 문제도 풀어보자<br><br><a href='#' onclick='three()'>[문제]</a>";
+            if (num1 === 2) {
+                s.innerHTML = "뭔가 떨어졌다.</a><br><br><a href='#' onclick='check()'>[확인]</a>";
+            }
+        }
+
+        function init() {
+            num1 = 0;
+        }
+
+        function one() {
+            window.open('poster.html', '포스터', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+            yes();
+        }
+
+        function two() {
+            var s = document.getElementById("text");
+            window.open('q1.html', '문제1', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+            ++num1;
+            yes();
+        }
+
+        function three() {
+            var s = document.getElementById("text");
+            window.open('q2.html', '문제2', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+            ++num1;
+            yes();
+        }
+
+        function check() {
+            var s = document.getElementById("text");
+            window.open('key.html', '열쇠', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+            s.innerHTML = "이제 나가보자.<br><br><a href='#' onclick='out()'>[나가기]</a> <br>";
+        }
+
+        function out() {
+            window.close();
+        }
+    </script>
+</head>
+
+<body onload="init()">
+
+    <p>
+        <img src="media/board.png" alt="">
+    </p>
+    <article>
+        <span id="text">문제들이 있다. 테블릿 pc를 이용해서 풀어보자. <br>
+            <a href='#' onclick='yes()'>[확인] </a><br></span>
+    </article>
+
+</body>
+
+</html>

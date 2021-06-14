@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>room1</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <audio src="sound/door-2-close.wav" autoplay loop></audio>
+
+    <script>
+        window.onload = function () {
+            //변수를 선언합니다.
+            var count = 0;
+            var image = document.getElementById('image');
+            var frames = [
+                'media/professor_room_box_moved1.png', 'media/professor_room_box_moved2.png',
+            ];
+            //타이머 반복을 사용합니다.
+            setInterval(function () {
+                image.src = frames[count % frames.length];
+                count = count + 1;
+            }, 1000/2);
+        };
+
+        function Move(){
+            var s = document.getElementById("text");
+            s.innerHTML = "후.... 이제 이동해볼까...?<br><br><a href='room3.html' onclick='mover()'>[확인]</a>";
+        }
+    </script>
+</head>
+
+<body>
+    <img id="image" />
+    <article>
+        <span id="text">...!</span></p>
+    </article>
+    <aside>
+        <button onclick="Move()">이동</button>
+    </aside>
+</body>
+
+</html>
+
+</html>

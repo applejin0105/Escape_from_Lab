@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table {
+            background-color: silver;
+            color: white;
+        }
+    </style>
+    <title>Shelf</title>
+    <script>
+        var select = -1; // 선택된 셀
+        var score = -1;
+        var tds;
+        var img;
+
+        function set() {
+            createTable(5);
+            tds = document.getElementsByTagName("td");
+            img = document.createElement("img")
+            img.setAttribute("id", "selected_img");
+            img.setAttribute("src", 'media/letter.png');
+            img.style.display = "block";
+            img.style.margin = "0 auto";
+            img.width = "128";
+            img.height = "46";
+            img.onclick = moveImageAndUpScore;
+            moveImageAndUpScore(); // 셀을 선택하고 이미지 출력
+        }
+
+        function createTable(size) {
+            // <table> 엘리먼트 만들어 달기
+            var table = document.createElement("table");
+            table.style.border = "1px solid black";
+            table.style.borderCollapse = "collapse";
+            document.body.appendChild(table);
+
+            for (var i = 0; i < size; i++) {
+                // <tr> 엘리먼트 만들어 달기
+                var tr = document.createElement("tr");
+                table.appendChild(tr);
+                for (var j = 0; j < size; j++) {
+                    // <td> 엘리먼트 만들어 달기
+                    var td = document.createElement("td");
+                    td.id = i * 10 + j; // 각 td에 id부여하기!!!!(0~99까지)
+                    td.style.border = "5px solid black";
+                    td.style.width = "1000px";
+                    td.style.height = "50px";
+                    td.style.padding = 0;
+                    tr.appendChild(td);
+                }
+            }
+        }
+
+        // <select> 태그의 change 리스너
+        function imgChange() {
+            var sel = document.getElementById("character");
+            img.setAttribute("src", sel.options[sel.selectedIndex].value);
+        }
+
+        // <img> 태그의 click 리스너
+        function moveImageAndUpScore() { // 다른 셀로 이미지를 옮기고, 점수를 올려준다
+            var randomNum = Math.floor(Math.random() * 5); // 랜덤한 수 가져온다
+            var go = document.getElementById(randomNum); // 가져온 임의의 수에 해당하는 td요소!
+            go.appendChild(img); // 해당 td에 그림 삽입!!
+            ++score;
+            if (score === 1) {
+                mover();
+            }
+        }
+
+        function mover(){
+            var ch = 1;
+            opener.SetValue(ch);
+            window.location.replace('tablet.html');
+        }
+    </script>
+</head>
+
+<body onload="set()">
+    <h2>Shelf</h2>
+    <p style="display: inline-block;"><span id="score"></span></p>
+    <src='media/letter.png' width="20" height="20">
+        <hr>
+</body>
+
+</html>

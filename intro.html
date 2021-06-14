@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Main_game</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script>
+        var Hint_count;
+        var Search_count;
+        var move_count;
+
+        function Move() {
+            var s = document.getElementById("text");
+            switch (move_count) {
+                case 0: s.innerHTML = "아직 확인하지 못한것이 있는것 같다."; break;
+                case 1: s.innerHTML = "좋아 이제 다른 방으로 이동해 볼까?<br><br><a href='room1.html' onclick='mover()'>[확인]</a>"; break;
+            }
+        }
+        function Search() {
+            var s = document.getElementById("text");
+            switch (Search_count) {
+                case 0: s.innerHTML = "문 아래에 메모가 떨어져 있다.<br>메모를 확인해볼까?<br><br><a href='#' onclick='opener()'>[확인]</a>"; break;
+                case 1: s.innerHTML = "책장을 확인해볼까?<br><br><a href='#' onclick='checker()'>[확인]</a>"; break;
+                case 2: s.innerHTML = "더 이상 찾을것은 없는 것 같다."; break;
+            }
+        }
+        function Hint() {
+            var s = document.getElementById("text");
+            switch (Hint_count) {
+                case 0: s.innerHTML = "일단 주변을 살펴보자"; break;
+                case 1: s.innerHTML = "책장을 살펴보자"; break;
+                case 2: s.innerHTML = "이제 다른 방으로 이동해보자"; break;
+            }
+
+        }
+        function init() {
+            Hint_count = 0;
+            Search_count = 0;
+            move_count = 0;
+        }
+        function opener() {
+            if (Hint_count === 0)
+                Hint_count = 1;
+            if (Search_count === 0)
+                Search_count = 1;
+            window.open('memo.html', '낡은 메모', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+            Search();
+        }
+        function checker() {
+            if (Hint_count === 1)
+                Hint_count = 2;
+            if (Search_count === 1)
+                Search_count = 2;
+            var check = window.open('Shelf.html', '책장', 'top=10, left=10, width=auto, height=600, status=no, menubar=no, toolbar=no, resizable=no, location=no');
+            Search();
+        }
+
+        function SetValue(ch) {
+            if (ch === 1)
+                move_count = 1;
+        }
+
+    </script>
+</head>
+
+<body onload="init()">
+    <!--<audio src="sound/clock.wav" autoplay loop></audio>-->
+    <section>
+        <p>
+            <img src="media/room_escape_memo.png" alt="">
+        </p>
+
+        <article>
+            <span id="text">으으... 여기가 어디지?</span></p>
+        </article>
+        <aside>
+            <button onclick="Search()">탐색</button>
+            <button onclick="Move()">이동</button>
+            <button onclick="Hint()">힌트</button>
+        </aside>
+    </section>
+</body>
+
+</html>

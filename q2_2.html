@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <audio src="sound/BootUp.wav" autoplay></audio>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <p id="main_img">
+        <img src="media/Maker2.png" alt="">
+    </p>
+    <p>자바스크립트 객체에 해당하는 것이 아닌 것은?</p>
+    <section>
+    <form name="form">
+        <input type="radio" name="qName" value="v1">코어_객체<br>
+        <input type="radio" name="qName" value="v2">BOM_객체<br>
+        <input type="radio" name="qName" value="v3">상속_객체<br>
+        <input type="radio" name="qName" value="v4">HTML_DOM_객체<br>
+    </section>
+        <aside>
+            <input type="button" name="선택" value="Check" onclick="myFucntion()" style="background-color: wheat;">
+        </aside>
+    </form>
+    <p id="check"></p>
+    <script type="text/javascript">
+        function myFucntion() {
+            if (form.qName[2].checked == true) {
+                window.close();
+            }
+            else document.getElementById("check").innerHTML = "Try Again.";
+        }
+        function correct(){
+            var s = document.getElementById("text");
+            s.innerHTML = "Correct!<br><br><a href='#' onclick='out()'>[나가기]</a> "
+        }
+        
+        function out(){
+            window.close();
+        }
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

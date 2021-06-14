@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <audio src="sound/폰진동1.wav" autoplay></audio>
+    <script>
+    </script>
+</head>
+
+<body>
+    <p id="main_img">
+        <img src="media/Maker.png" alt="">
+    </p>
+    <p> 박#를 x*으) 옮기@ 위$서 &택 해! 할것 ^ )</p>
+    <section>
+    <form name="form">
+        <input type="radio" name="qName" value="v1">transform: translatey(50%)CSS<br>
+        <input type="radio" name="qName" value="v2">translate: transform(50%)HTML5<br>
+        <input type="radio" name="qName" value="v3">transform: translatex(50%)<br>
+        <input type="radio" name="qName" value="v4">translate: transform(50%)Javascript<br>
+    </section>
+        <aside>
+            <input type="button" name="선택" value="Check" onclick="myFucntion()" style="background-color: wheat;">
+        </aside>
+    </form>
+    <p id="check"></p>
+    <script type="text/javascript">
+        function myFucntion() {
+            if (form.qName[2].checked == true) {
+                window.close();
+            }
+            else document.getElementById("check").innerHTML = "Try Again.";
+        }
+        function correct(){
+            var s = document.getElementById("text");
+            s.innerHTML = "Correct!<br><br><a href='#' onclick='out()'>[나가기]</a> "
+        }
+        
+        function out(){
+            window.close();
+        }
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>
